@@ -321,7 +321,7 @@ const Index = () => {
               </div>
 
               <button
-                onClick={addQuestion}
+                onClick={(e) => e.preventDefault()}
                 className="mt-4 flex w-full items-center justify-center gap-2 rounded-xl border-2 border-dashed border-border py-4 text-sm font-semibold text-muted-foreground hover:border-primary hover:text-primary"
               >
                 <Plus className="h-4 w-4" />
