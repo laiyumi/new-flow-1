@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { BarChart3, Play, Activity, History, MessageSquare, RotateCcw } from "lucide-react";
+import { BarChart3, Play, Activity, History, MessageSquare, RotateCcw, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { getPollState, subscribe, type PastSession } from "@/lib/sessions";
 
@@ -18,15 +18,15 @@ const polls: Poll[] = [
     name: "Test Poll",
     course: "CS101 · Spring 2026",
     seedSessions: [
-      { id: "seed-1", name: "Apr 27, 2026 7:19 PM", endedAt: 0 },
-      { id: "seed-2", name: "Apr 20, 2026 7:05 PM", endedAt: 0 },
+      { id: "seed-1", name: "Apr 27, 2026 7:19 PM", endedAt: 0, participants: 32 },
+      { id: "seed-2", name: "Apr 20, 2026 7:05 PM", endedAt: 0, participants: 28 },
     ],
   },
   {
     id: "test-non-anonymous",
     name: "Test non-anonymous",
     course: "CS101 · Spring 2026",
-    seedSessions: [{ id: "seed-1", name: "Apr 27, 2026 6:48 PM", endedAt: 0 }],
+    seedSessions: [{ id: "seed-1", name: "Apr 27, 2026 6:48 PM", endedAt: 0, participants: 41 }],
   },
 ];
 
@@ -108,7 +108,13 @@ const MyPolls = () => {
                     <ul className="divide-y">
                       {sessions.map((s) => (
                         <li key={s.id} className="flex items-center justify-between gap-3 py-2">
-                          <span className="text-sm font-medium text-foreground">{s.name}</span>
+                          <div className="flex min-w-0 items-center gap-3">
+                            <span className="truncate text-sm font-medium text-foreground">{s.name}</span>
+                            <span className="inline-flex shrink-0 items-center gap-1 text-xs font-semibold text-muted-foreground">
+                              <Users className="h-3.5 w-3.5" />
+                              {s.participants}
+                            </span>
+                          </div>
                           <div className="flex items-center gap-2">
                             <Button
                               variant="outline"
