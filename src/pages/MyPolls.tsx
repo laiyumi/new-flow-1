@@ -82,7 +82,7 @@ const MyPolls = () => {
                 {hasActive ? (
                   <Button
                     onClick={() => launchSession(poll)}
-                    className="mb-5 h-10 w-full rounded-lg bg-primary text-primary-foreground hover:bg-primary/90"
+                    className="mb-5 h-10 w-full rounded-lg bg-warning text-warning-foreground hover:bg-warning/90"
                   >
                     <RotateCcw className="mr-2 h-4 w-4" />
                     Resume session

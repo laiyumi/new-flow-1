@@ -23,6 +23,9 @@ All colors MUST be HSL.
     --info: 207 90% 54%;
     --info-foreground: 0 0% 100%;
 
+    --warning: 25 95% 53%;
+    --warning-foreground: 0 0% 100%;
+
     --surface: 220 20% 97%;
     --surface-foreground: 222 30% 20%;
 
