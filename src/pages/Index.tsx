@@ -101,11 +101,14 @@ const Index = () => {
           </button>
           <h1 className="text-3xl font-bold tracking-tight text-foreground">{pollName}</h1>
           <span className="text-sm font-medium text-muted-foreground">
-            session: {(() => {
-              const d = new Date();
-              const pad = (n: number) => String(n).padStart(2, "0");
-              return `${pad(d.getMonth() + 1)}-${pad(d.getDate())}-${String(d.getFullYear()).slice(-2)} ${pad(d.getHours())}:${pad(d.getMinutes())}`;
-            })()}
+            session: {new Date().toLocaleString("en-US", {
+              month: "short",
+              day: "numeric",
+              year: "numeric",
+              hour: "numeric",
+              minute: "2-digit",
+              hour12: true,
+            }).replace(",", ",").replace(" at ", " ")}
           </span>
         </div>
 
