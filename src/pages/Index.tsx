@@ -166,9 +166,9 @@ const Index = () => {
                 <div></div>
                 <div>QUESTION</div>
                 <div className="text-center">TIMER</div>
-                <div className="text-center">START</div>
+                <div className="text-center">ACTION</div>
                 <div className="text-center">STATUS</div>
-                <div className="text-center">VISIBLE</div>
+                <div className="text-center">RESULT VISIBILITY</div>
                 <div className="text-center">FORMAT</div>
                 <div className="text-center">EDIT</div>
                 <div className="text-center">TRASH</div>
