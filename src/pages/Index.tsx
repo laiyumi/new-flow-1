@@ -40,7 +40,7 @@ type Question = {
   timer: string;
   format: string;
   visible: boolean;
-  status: "not-started" | "running" | "complete";
+  status: "not-started" | "live" | "paused";
 };
 
 const initialQuestions: Question[] = [
