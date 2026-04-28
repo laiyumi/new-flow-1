@@ -87,6 +87,7 @@ export const endActiveSession = (pollId: string) => {
     id: `${state.active.startedAt}`,
     name: state.active.name,
     endedAt: Date.now(),
+    participants: Math.floor(Math.random() * 40) + 5,
   };
   setPollState(pollId, { active: null, past: [past, ...state.past] });
 };
