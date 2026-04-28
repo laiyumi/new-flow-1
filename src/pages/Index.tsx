@@ -97,14 +97,13 @@ const Index = () => {
               </label>
             </div>
             <div className="flex flex-wrap items-center gap-2">
-              <Button className="h-10 rounded-lg bg-primary px-3 text-primary-foreground hover:bg-primary/90">
+              <Button className="h-10 rounded-lg bg-info px-3 text-info-foreground hover:bg-info/90">
                 <Eye className="mr-2 h-4 w-4" />
                 View as Participant
               </Button>
               <Button
                 onClick={toggleAllVisible}
-                variant="outline"
-                className="h-10 rounded-lg border-info/30 bg-info/10 text-info hover:bg-info/20 hover:text-info"
+                className="h-10 rounded-lg bg-info px-3 text-info-foreground hover:bg-info/90"
               >
                 <Radio className="mr-2 h-4 w-4" />
                 Display All Results
