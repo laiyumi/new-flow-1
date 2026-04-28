@@ -183,7 +183,6 @@ const Index = () => {
                 Display All Results
               </Button>
             </div>
-            </div>
           </div>
         </section>
 
