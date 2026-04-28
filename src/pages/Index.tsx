@@ -149,7 +149,7 @@ const Index = () => {
 
         {/* Participant Control */}
         <section className="rounded-2xl bg-card p-6 shadow-sm">
-          <div className="mb-4 text-xs font-bold tracking-widest text-muted-foreground">
+          <div className="mb-4 text-base font-bold tracking-widest text-muted-foreground">
             PARTICIPANT CONTROL
           </div>
           <div className="flex flex-wrap items-center justify-between gap-4">
