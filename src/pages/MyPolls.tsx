@@ -119,7 +119,7 @@ const MyPolls = () => {
                             <Button
                               variant="outline"
                               size="sm"
-                              disabled
+                              onClick={(e) => e.preventDefault()}
                               className="h-8 rounded-md"
                             >
                               <Activity className="mr-2 h-3.5 w-3.5" />
@@ -128,7 +128,7 @@ const MyPolls = () => {
                             <Button
                               variant="outline"
                               size="sm"
-                              disabled
+                              onClick={(e) => e.preventDefault()}
                               className="h-8 rounded-md"
                             >
                               <MessageSquare className="mr-2 h-3.5 w-3.5" />
