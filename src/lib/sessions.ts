@@ -5,6 +5,7 @@ export type PastSession = {
   id: string;
   name: string; // formatted date label, e.g. "Apr 28, 2026 11:30 AM"
   endedAt: number;
+  participants: number;
 };
 
 export type ActiveSession = {
