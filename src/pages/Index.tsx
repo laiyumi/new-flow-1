@@ -57,6 +57,22 @@ const Index = () => {
   const defaultTab = (location.state as { tab?: string } | null)?.tab ?? "questions";
   const [pollName] = useState(stateName ?? "Week 1 Lecture Feedback");
   const [anonymous, setAnonymous] = useState(true);
+  const [anonDialogOpen, setAnonDialogOpen] = useState(false);
+  const invitedParticipants = 42; // mock count of invited participants in the space
+
+  const handleAnonymousChange = (next: boolean) => {
+    if (!next) {
+      // toggling OFF -> confirm restricted access first
+      setAnonDialogOpen(true);
+    } else {
+      setAnonymous(true);
+    }
+  };
+
+  const confirmDisableAnonymous = () => {
+    setAnonymous(false);
+    setAnonDialogOpen(false);
+  };
   const [liveQA, setLiveQA] = useState(false);
   const [questions, setQuestions] = useState<Question[]>(initialQuestions);
   const [allVisible, setAllVisible] = useState(false);
@@ -155,7 +171,7 @@ const Index = () => {
           <div className="flex flex-wrap items-center justify-between gap-4">
             <div className="flex flex-wrap items-center gap-6">
               <label className="flex items-center gap-3">
-                <Switch checked={anonymous} onCheckedChange={setAnonymous} />
+                <Switch checked={anonymous} onCheckedChange={handleAnonymousChange} />
                 <span className="text-sm font-semibold text-foreground">Anonymous</span>
               </label>
               <label className="flex items-center gap-3">
@@ -367,6 +383,29 @@ const Index = () => {
               className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
             >
               End session
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+
+      <Dialog open={anonDialogOpen} onOpenChange={setAnonDialogOpen}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Disable anonymous responses?</DialogTitle>
+            <DialogDescription>
+              Turning off anonymous mode will restrict this session to invited participants only.
+              Currently <span className="font-semibold text-foreground">{invitedParticipants}</span> participants are invited in this space.
+            </DialogDescription>
+          </DialogHeader>
+          <DialogFooter className="gap-2 sm:gap-2">
+            <Button variant="outline" onClick={() => setAnonDialogOpen(false)}>
+              Keep anonymous
+            </Button>
+            <Button
+              onClick={confirmDisableAnonymous}
+              className="bg-primary text-primary-foreground hover:bg-primary/90"
+            >
+              Disable anonymous
             </Button>
           </DialogFooter>
         </DialogContent>
