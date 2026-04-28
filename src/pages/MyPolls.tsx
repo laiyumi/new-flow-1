@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { BarChart3, Play, Activity, History } from "lucide-react";
+import { BarChart3, Play, Activity, History, MessageSquare } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 type Session = {
