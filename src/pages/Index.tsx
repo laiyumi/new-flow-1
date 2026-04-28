@@ -40,13 +40,14 @@ type Question = {
   timer: string;
   format: string;
   visible: boolean;
-  status: "not-started" | "live" | "paused";
+  status: "not-started" | "live" | "completed";
+  votes: number;
 };
 
 const initialQuestions: Question[] = [
-  { id: 1, text: "What is your favorite Java IDE?", timer: "no-timer", format: "bar", visible: false, status: "not-started" },
-  { id: 2, text: "In one sentence, describe what a class is.", timer: "no-timer", format: "word", visible: false, status: "not-started" },
-  { id: 3, text: "Which language do you want to learn next?", timer: "no-timer", format: "bar", visible: false, status: "not-started" },
+  { id: 1, text: "What is your favorite Java IDE?", timer: "no-timer", format: "bar", visible: false, status: "not-started", votes: 0 },
+  { id: 2, text: "In one sentence, describe what a class is.", timer: "no-timer", format: "word", visible: false, status: "not-started", votes: 0 },
+  { id: 3, text: "Which language do you want to learn next?", timer: "no-timer", format: "bar", visible: false, status: "not-started", votes: 0 },
 ];
 
 const Index = () => {
@@ -108,11 +109,13 @@ const Index = () => {
     setQuestions((qs) =>
       qs.map((q) => {
         if (q.id !== id) return q;
-        // not-started -> live (push to participants)
-        // live        -> paused (stop accepting answers)
-        // paused      -> live (resume)
-        const next: Question["status"] = q.status === "live" ? "paused" : "live";
-        return { ...q, status: next };
+        if (q.status === "live") {
+          // stop -> completed, keep accumulated votes
+          return { ...q, status: "completed" };
+        }
+        // not-started or completed -> live; seed/refresh a mock vote count
+        const seed = q.votes > 0 ? q.votes : Math.floor(Math.random() * 30) + 5;
+        return { ...q, status: "live", votes: seed };
       }),
     );
 
@@ -126,6 +129,7 @@ const Index = () => {
         format: "bar",
         visible: false,
         status: "not-started",
+        votes: 0,
       },
     ]);
 
@@ -136,10 +140,20 @@ const Index = () => {
   };
 
   const statusLabel = (s: Question["status"]) =>
-    s === "live" ? "Pause" : "Start";
+    s === "live" ? "Stop" : "Start";
 
-  const statusBadge = (s: Question["status"]) =>
-    s === "not-started" ? "Not started" : s === "live" ? "Live" : "Paused";
+  const statusBadge = (q: Question) => {
+    if (q.status === "not-started") return "Not started";
+    if (q.status === "live") return `Live · ${q.votes} votes`;
+    return `Completed · ${q.votes} votes`;
+  };
+
+  const statusClass = (s: Question["status"]) =>
+    s === "live"
+      ? "text-primary"
+      : s === "completed"
+        ? "text-muted-foreground"
+        : "text-muted-foreground";
 
   return (
     <div className="min-h-screen bg-surface p-6">
@@ -280,7 +294,7 @@ const Index = () => {
                         onClick={() => cycleStatus(q.id)}
                         className={
                           q.status === "live"
-                            ? "h-9 w-[88px] rounded-lg bg-warning text-warning-foreground hover:bg-warning/90"
+                            ? "h-9 w-[88px] rounded-lg bg-destructive text-destructive-foreground hover:bg-destructive/90"
                             : "h-9 w-[88px] rounded-lg bg-primary text-primary-foreground hover:bg-primary/90"
                         }
                       >
@@ -288,8 +302,8 @@ const Index = () => {
                       </Button>
                     </div>
 
-                    <div className="text-center text-xs font-semibold text-muted-foreground">
-                      {statusBadge(q.status)}
+                    <div className={`text-center text-xs font-semibold ${statusClass(q.status)}`}>
+                      {statusBadge(q)}
                     </div>
 
                     <div className="flex justify-center">
