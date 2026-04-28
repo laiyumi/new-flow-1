@@ -249,11 +249,7 @@ const Index = () => {
 
           <TabsContent value="questions" className="mt-6">
             <section className="rounded-2xl bg-card p-6 shadow-sm">
-              <h2 className="mb-6 text-sm font-bold tracking-widest text-muted-foreground">
-                QUESTIONS LIST
-              </h2>
-
-              <div className="grid grid-cols-[40px_minmax(0,1fr)_120px_100px_110px_140px_140px_60px] items-center gap-3 border-b pb-3 text-[11px] font-bold tracking-widest text-muted-foreground">
+              <div className="grid grid-cols-[40px_minmax(0,1fr)_120px_100px_110px_140px_140px_60px] items-center gap-3 border-b pb-3 text-sm font-bold tracking-widest text-foreground">
                 <div></div>
                 <div>QUESTION</div>
                 <div className="text-center">TIMER</div>
