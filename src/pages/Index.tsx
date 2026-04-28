@@ -1,7 +1,13 @@
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
-import { Eye, EyeOff, Plus, Trash2, SlidersHorizontal, Radio } from "lucide-react";
+import { Eye, EyeOff, Plus, Trash2, SlidersHorizontal, Radio, MoreVertical } from "lucide-react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -162,7 +168,7 @@ const Index = () => {
                 QUESTIONS LIST
               </h2>
 
-              <div className="grid grid-cols-[40px_minmax(0,1fr)_120px_100px_110px_90px_140px_70px_70px] items-center gap-3 border-b pb-3 text-[11px] font-bold tracking-widest text-muted-foreground">
+              <div className="grid grid-cols-[40px_minmax(0,1fr)_120px_100px_110px_140px_140px_60px] items-center gap-3 border-b pb-3 text-[11px] font-bold tracking-widest text-muted-foreground">
                 <div></div>
                 <div>QUESTION</div>
                 <div className="text-center">TIMER</div>
@@ -170,15 +176,14 @@ const Index = () => {
                 <div className="text-center">STATUS</div>
                 <div className="text-center">RESULT VISIBILITY</div>
                 <div className="text-center">FORMAT</div>
-                <div className="text-center">EDIT</div>
-                <div className="text-center">TRASH</div>
+                <div className="text-center">MORE</div>
               </div>
 
               <div className="divide-y">
                 {questions.map((q, i) => (
                   <div
                     key={q.id}
-                    className="grid grid-cols-[40px_minmax(0,1fr)_120px_100px_110px_90px_140px_70px_70px] items-center gap-3 py-4"
+                    className="grid grid-cols-[40px_minmax(0,1fr)_120px_100px_110px_140px_140px_60px] items-center gap-3 py-4"
                   >
                     <div className="flex h-7 w-7 items-center justify-center rounded-md bg-primary/10 text-sm font-bold text-primary">
                       {i + 1}
@@ -240,19 +245,29 @@ const Index = () => {
                     </div>
 
                     <div className="flex justify-center">
-                      <button className="rounded-md p-2 text-muted-foreground hover:bg-muted" aria-label="Edit">
-                        <SlidersHorizontal className="h-4 w-4" />
-                      </button>
-                    </div>
-
-                    <div className="flex justify-center">
-                      <button
-                        onClick={() => removeQuestion(q.id)}
-                        className="rounded-md p-2 text-muted-foreground hover:bg-destructive/10 hover:text-destructive"
-                        aria-label="Delete"
-                      >
-                        <Trash2 className="h-4 w-4" />
-                      </button>
+                      <DropdownMenu>
+                        <DropdownMenuTrigger asChild>
+                          <button
+                            className="rounded-md p-2 text-muted-foreground hover:bg-muted"
+                            aria-label="More actions"
+                          >
+                            <MoreVertical className="h-4 w-4" />
+                          </button>
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent align="end" className="w-40">
+                          <DropdownMenuItem>
+                            <SlidersHorizontal className="mr-2 h-4 w-4" />
+                            Edit
+                          </DropdownMenuItem>
+                          <DropdownMenuItem
+                            onClick={() => removeQuestion(q.id)}
+                            className="text-destructive focus:bg-destructive/10 focus:text-destructive"
+                          >
+                            <Trash2 className="mr-2 h-4 w-4" />
+                            Delete
+                          </DropdownMenuItem>
+                        </DropdownMenuContent>
+                      </DropdownMenu>
                     </div>
                   </div>
                 ))}
