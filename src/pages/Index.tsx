@@ -5,6 +5,7 @@ import {
   ensureActiveSession,
   endActiveSession,
   leaveSessionActive as leaveSessionActiveStore,
+  discardActiveSession,
 } from "@/lib/sessions";
 import { Eye, EyeOff, Plus, Trash2, SlidersHorizontal, Radio, MoreVertical, Users } from "lucide-react";
 import {
@@ -95,6 +96,12 @@ const Index = () => {
 
   const leaveSessionActive = () => {
     leaveSessionActiveStore(pollId);
+    setBackDialogOpen(false);
+    navigate("/");
+  };
+
+  const discardSession = () => {
+    discardActiveSession(pollId);
     setBackDialogOpen(false);
     navigate("/");
   };
@@ -383,10 +390,13 @@ const Index = () => {
           <DialogHeader>
             <DialogTitle>Leaving the current session</DialogTitle>
             <DialogDescription>
-              End the session to save results and Q&amp;A. Leave to keep it active and return later.
+              End the session to save results and Q&amp;A. Leave to keep it active and return later, or just go back without recording this session.
             </DialogDescription>
           </DialogHeader>
           <DialogFooter className="gap-2 sm:gap-2">
+            <Button variant="ghost" onClick={discardSession}>
+              Just leave
+            </Button>
             <Button variant="outline" onClick={leaveSessionActive}>
               Leave, keep session active
             </Button>
