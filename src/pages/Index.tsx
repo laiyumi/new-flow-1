@@ -1,6 +1,11 @@
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
+import {
+  ensureActiveSession,
+  endActiveSession,
+  leaveSessionActive as leaveSessionActiveStore,
+} from "@/lib/sessions";
 import { Eye, EyeOff, Plus, Trash2, SlidersHorizontal, Radio, MoreVertical } from "lucide-react";
 import {
   DropdownMenu,
@@ -56,13 +61,22 @@ const Index = () => {
   const [allVisible, setAllVisible] = useState(false);
   const [backDialogOpen, setBackDialogOpen] = useState(false);
 
+  const pollId = params.id ?? "test-poll";
+  const sessionLabel = useMemo(() => ensureActiveSession(pollId).name, [pollId]);
+
+  // Make sure an active session exists as soon as the presenter view opens
+  useEffect(() => {
+    ensureActiveSession(pollId);
+  }, [pollId]);
+
   const endSession = () => {
-    // TODO: persist results & Q&A for this session
+    endActiveSession(pollId);
     setBackDialogOpen(false);
     navigate("/");
   };
 
   const leaveSessionActive = () => {
+    leaveSessionActiveStore(pollId);
     setBackDialogOpen(false);
     navigate("/");
   };
@@ -122,14 +136,7 @@ const Index = () => {
           </button>
           <h1 className="text-3xl font-bold tracking-tight text-foreground">{pollName}</h1>
           <span className="text-sm font-medium text-muted-foreground">
-            session: {new Date().toLocaleString("en-US", {
-              month: "short",
-              day: "numeric",
-              year: "numeric",
-              hour: "numeric",
-              minute: "2-digit",
-              hour12: true,
-            }).replace(",", ",").replace(" at ", " ")}
+            session: {sessionLabel}
           </span>
         </div>
 
