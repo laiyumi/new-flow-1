@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import { Eye, EyeOff, Plus, Trash2, SlidersHorizontal, Radio, MoreVertical } from "lucide-react";
 import {
@@ -47,6 +47,7 @@ const initialQuestions: Question[] = [
 
 const Index = () => {
   const location = useLocation();
+  const params = useParams();
   const navigate = useNavigate();
   const stateName = (location.state as { name?: string } | null)?.name;
   const defaultTab = (location.state as { tab?: string } | null)?.tab ?? "questions";
@@ -152,6 +153,9 @@ const Index = () => {
             </div>
             <div className="flex flex-wrap items-center gap-2">
               <Button
+                onClick={() =>
+                  window.open(`/polls/${params.id ?? "test-poll"}/join`, "_blank", "noopener")
+                }
                 variant="outline"
                 className="h-10 rounded-lg border-info/40 bg-transparent px-3 text-info hover:bg-info/10 hover:text-info"
               >
