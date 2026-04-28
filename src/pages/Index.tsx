@@ -28,8 +28,8 @@ const initialQuestions: Question[] = [
 
 const Index = () => {
   const [pollName] = useState("Test non-anonymous");
-  const [anonymous, setAnonymous] = useState(false);
-  const [liveQA, setLiveQA] = useState(true);
+  const [anonymous, setAnonymous] = useState(true);
+  const [liveQA, setLiveQA] = useState(false);
   const [questions, setQuestions] = useState<Question[]>(initialQuestions);
   const [allVisible, setAllVisible] = useState(false);
 
