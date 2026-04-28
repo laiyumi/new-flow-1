@@ -61,13 +61,22 @@ const Index = () => {
   const [allVisible, setAllVisible] = useState(false);
   const [backDialogOpen, setBackDialogOpen] = useState(false);
 
+  const pollId = params.id ?? "test-poll";
+  const sessionLabel = useMemo(() => ensureActiveSession(pollId).name, [pollId]);
+
+  // Make sure an active session exists as soon as the presenter view opens
+  useEffect(() => {
+    ensureActiveSession(pollId);
+  }, [pollId]);
+
   const endSession = () => {
-    // TODO: persist results & Q&A for this session
+    endActiveSession(pollId);
     setBackDialogOpen(false);
     navigate("/");
   };
 
   const leaveSessionActive = () => {
+    leaveSessionActiveStore(pollId);
     setBackDialogOpen(false);
     navigate("/");
   };
