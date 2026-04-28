@@ -171,7 +171,7 @@ const Index = () => {
           <div className="flex flex-wrap items-center justify-between gap-4">
             <div className="flex flex-wrap items-center gap-6">
               <label className="flex items-center gap-3">
-                <Switch checked={anonymous} onCheckedChange={setAnonymous} />
+                <Switch checked={anonymous} onCheckedChange={handleAnonymousChange} />
                 <span className="text-sm font-semibold text-foreground">Anonymous</span>
               </label>
               <label className="flex items-center gap-3">
