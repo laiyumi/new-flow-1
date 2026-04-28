@@ -47,6 +47,12 @@ const MyPolls = () => {
     });
   };
 
+  const viewQA = (poll: Poll, session: Session) => {
+    navigate(`/polls/${poll.id}`, {
+      state: { name: poll.name, tab: "qa", sessionName: session.name },
+    });
+  };
+
   return (
     <div className="min-h-screen bg-surface p-8">
       <div className="mx-auto max-w-6xl">
