@@ -197,12 +197,14 @@ const Index = () => {
             </TabsTrigger>
             <TabsTrigger
               value="results"
+              disabled
               className="relative h-11 rounded-none border-b-2 border-transparent bg-transparent px-1 text-sm font-bold tracking-wide text-muted-foreground shadow-none data-[state=active]:border-primary data-[state=active]:bg-transparent data-[state=active]:text-primary data-[state=active]:shadow-none"
             >
               RESULTS
             </TabsTrigger>
             <TabsTrigger
               value="qa"
+              disabled
               className="relative h-11 rounded-none border-b-2 border-transparent bg-transparent px-1 text-sm font-bold tracking-wide text-muted-foreground shadow-none data-[state=active]:border-primary data-[state=active]:bg-transparent data-[state=active]:text-primary data-[state=active]:shadow-none"
             >
               Q&amp;A BOARD
@@ -321,8 +323,8 @@ const Index = () => {
               </div>
 
               <button
-                onClick={addQuestion}
-                className="mt-4 flex w-full items-center justify-center gap-2 rounded-xl border-2 border-dashed border-border py-4 text-sm font-semibold text-muted-foreground hover:border-primary hover:text-primary"
+                disabled
+                className="mt-4 flex w-full cursor-not-allowed items-center justify-center gap-2 rounded-xl border-2 border-dashed border-border py-4 text-sm font-semibold text-muted-foreground opacity-50"
               >
                 <Plus className="h-4 w-4" />
                 Add Question
