@@ -79,6 +79,13 @@ export const leaveSessionActive = (pollId: string) => {
   ensureActiveSession(pollId);
 };
 
+/** Discard the active session without recording it as past. */
+export const discardActiveSession = (pollId: string) => {
+  const state = getPollState(pollId);
+  if (!state.active) return;
+  setPollState(pollId, { ...state, active: null });
+};
+
 /** End current session: move active → past list. */
 export const endActiveSession = (pollId: string) => {
   const state = getPollState(pollId);
