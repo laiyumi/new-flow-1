@@ -136,10 +136,10 @@ const Index = () => {
   };
 
   const statusLabel = (s: Question["status"]) =>
-    s === "not-started" ? "Start" : s === "running" ? "Stop" : "Start";
+    s === "live" ? "Pause" : "Start";
 
   const statusBadge = (s: Question["status"]) =>
-    s === "not-started" ? "Not Yet" : s === "running" ? "Running" : "Complete";
+    s === "not-started" ? "Not started" : s === "live" ? "Live" : "Paused";
 
   return (
     <div className="min-h-screen bg-surface p-6">
