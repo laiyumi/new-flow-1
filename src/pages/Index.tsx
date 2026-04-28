@@ -134,7 +134,7 @@ const Index = () => {
         </section>
 
         {/* Underlined Tabs */}
-        <Tabs defaultValue="questions" className="w-full">
+        <Tabs defaultValue={defaultTab} className="w-full">
           <TabsList className="h-auto w-full justify-start gap-6 rounded-none border-b bg-transparent p-0">
             <TabsTrigger
               value="questions"
