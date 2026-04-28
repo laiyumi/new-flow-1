@@ -24,7 +24,7 @@ const polls: Poll[] = [
   },
   {
     id: "test-non-anonymous",
-    name: "Test non-anonymous",
+    name: "Week 1 Lecture Feedback",
     course: "CS101 · Spring 2026",
     seedSessions: [{ id: "seed-1", name: "Apr 27, 2026 6:48 PM", endedAt: 0, participants: 41 }],
   },
