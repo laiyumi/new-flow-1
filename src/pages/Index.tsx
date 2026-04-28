@@ -9,6 +9,16 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
 import { Switch } from "@/components/ui/switch";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import SharePopover from "@/components/SharePopover";
@@ -45,6 +55,18 @@ const Index = () => {
   const [liveQA, setLiveQA] = useState(false);
   const [questions, setQuestions] = useState<Question[]>(initialQuestions);
   const [allVisible, setAllVisible] = useState(false);
+  const [backDialogOpen, setBackDialogOpen] = useState(false);
+
+  const endSession = () => {
+    // TODO: persist results & Q&A for this session
+    setBackDialogOpen(false);
+    navigate("/");
+  };
+
+  const leaveSessionActive = () => {
+    setBackDialogOpen(false);
+    navigate("/");
+  };
 
   const toggleVisible = (id: number) =>
     setQuestions((qs) => qs.map((q) => (q.id === id ? { ...q, visible: !q.visible } : q)));
@@ -93,7 +115,7 @@ const Index = () => {
         {/* Title */}
         <div className="flex items-center gap-3">
           <button
-            onClick={() => navigate("/")}
+            onClick={() => setBackDialogOpen(true)}
             className="rounded-md p-2 text-muted-foreground hover:bg-muted hover:text-foreground"
             aria-label="Back to My Polls"
           >
@@ -306,6 +328,34 @@ const Index = () => {
           </TabsContent>
         </Tabs>
       </div>
+
+      <AlertDialog open={backDialogOpen} onOpenChange={setBackDialogOpen}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Leaving the presenter view</AlertDialogTitle>
+            <AlertDialogDescription>
+              Do you want to end this session, or just leave the page and come back later?
+              Ending the session will store all results and Q&amp;A. Leaving keeps the session
+              active so participants can continue to respond.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter className="gap-2 sm:gap-2">
+            <AlertDialogCancel>Stay on page</AlertDialogCancel>
+            <Button
+              variant="outline"
+              onClick={leaveSessionActive}
+            >
+              Leave, keep session active
+            </Button>
+            <AlertDialogAction
+              onClick={endSession}
+              className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+            >
+              End session
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   );
 };
