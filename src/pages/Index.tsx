@@ -331,31 +331,27 @@ const Index = () => {
         </Tabs>
       </div>
 
-      <AlertDialog open={backDialogOpen} onOpenChange={setBackDialogOpen}>
-        <AlertDialogContent>
-          <AlertDialogHeader>
-            <AlertDialogTitle>Leaving the current session</AlertDialogTitle>
-            <AlertDialogDescription>
+      <Dialog open={backDialogOpen} onOpenChange={setBackDialogOpen}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Leaving the current session</DialogTitle>
+            <DialogDescription>
               End the session to save results and Q&amp;A. Leave to keep it active and return later.
-            </AlertDialogDescription>
-          </AlertDialogHeader>
-          <AlertDialogFooter className="gap-2 sm:gap-2">
-            <AlertDialogCancel>Cancel</AlertDialogCancel>
-            <Button
-              variant="outline"
-              onClick={leaveSessionActive}
-            >
+            </DialogDescription>
+          </DialogHeader>
+          <DialogFooter className="gap-2 sm:gap-2">
+            <Button variant="outline" onClick={leaveSessionActive}>
               Leave, keep session active
             </Button>
-            <AlertDialogAction
+            <Button
               onClick={endSession}
               className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
             >
               End session
-            </AlertDialogAction>
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
