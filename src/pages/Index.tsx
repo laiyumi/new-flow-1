@@ -55,6 +55,18 @@ const Index = () => {
   const [liveQA, setLiveQA] = useState(false);
   const [questions, setQuestions] = useState<Question[]>(initialQuestions);
   const [allVisible, setAllVisible] = useState(false);
+  const [backDialogOpen, setBackDialogOpen] = useState(false);
+
+  const endSession = () => {
+    // TODO: persist results & Q&A for this session
+    setBackDialogOpen(false);
+    navigate("/");
+  };
+
+  const leaveSessionActive = () => {
+    setBackDialogOpen(false);
+    navigate("/");
+  };
 
   const toggleVisible = (id: number) =>
     setQuestions((qs) => qs.map((q) => (q.id === id ? { ...q, visible: !q.visible } : q)));
