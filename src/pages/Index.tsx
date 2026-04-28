@@ -40,7 +40,7 @@ type Question = {
   timer: string;
   format: string;
   visible: boolean;
-  status: "not-started" | "running" | "complete";
+  status: "not-started" | "live" | "paused";
 };
 
 const initialQuestions: Question[] = [
@@ -108,8 +108,10 @@ const Index = () => {
     setQuestions((qs) =>
       qs.map((q) => {
         if (q.id !== id) return q;
-        const next: Question["status"] =
-          q.status === "not-started" ? "running" : q.status === "running" ? "complete" : "not-started";
+        // not-started -> live (push to participants)
+        // live        -> paused (stop accepting answers)
+        // paused      -> live (resume)
+        const next: Question["status"] = q.status === "live" ? "paused" : "live";
         return { ...q, status: next };
       }),
     );
@@ -134,10 +136,10 @@ const Index = () => {
   };
 
   const statusLabel = (s: Question["status"]) =>
-    s === "not-started" ? "Start" : s === "running" ? "Stop" : "Start";
+    s === "live" ? "Pause" : "Start";
 
   const statusBadge = (s: Question["status"]) =>
-    s === "not-started" ? "Not Yet" : s === "running" ? "Running" : "Complete";
+    s === "not-started" ? "Not started" : s === "live" ? "Live" : "Paused";
 
   return (
     <div className="min-h-screen bg-surface p-6">
@@ -277,8 +279,8 @@ const Index = () => {
                         size="sm"
                         onClick={() => cycleStatus(q.id)}
                         className={
-                          q.status === "running"
-                            ? "h-9 w-[88px] rounded-lg bg-destructive text-destructive-foreground hover:bg-destructive/90"
+                          q.status === "live"
+                            ? "h-9 w-[88px] rounded-lg bg-warning text-warning-foreground hover:bg-warning/90"
                             : "h-9 w-[88px] rounded-lg bg-primary text-primary-foreground hover:bg-primary/90"
                         }
                       >
