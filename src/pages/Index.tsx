@@ -387,6 +387,29 @@ const Index = () => {
           </DialogFooter>
         </DialogContent>
       </Dialog>
+
+      <Dialog open={anonDialogOpen} onOpenChange={setAnonDialogOpen}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Disable anonymous responses?</DialogTitle>
+            <DialogDescription>
+              Turning off anonymous mode will restrict this session to invited participants only.
+              Currently <span className="font-semibold text-foreground">{invitedParticipants}</span> participants are invited in this space.
+            </DialogDescription>
+          </DialogHeader>
+          <DialogFooter className="gap-2 sm:gap-2">
+            <Button variant="outline" onClick={() => setAnonDialogOpen(false)}>
+              Keep anonymous
+            </Button>
+            <Button
+              onClick={confirmDisableAnonymous}
+              className="bg-primary text-primary-foreground hover:bg-primary/90"
+            >
+              Disable anonymous
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
