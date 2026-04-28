@@ -100,7 +100,7 @@ const MyPolls = () => {
                             className="h-8 rounded-md"
                           >
                             <Activity className="mr-2 h-3.5 w-3.5" />
-                            View results
+                            Results
                           </Button>
                           <Button
                             variant="outline"
@@ -109,7 +109,7 @@ const MyPolls = () => {
                             className="h-8 rounded-md"
                           >
                             <MessageSquare className="mr-2 h-3.5 w-3.5" />
-                            View Q&amp;A board
+                            Q&amp;A board
                           </Button>
                         </div>
                       </li>
