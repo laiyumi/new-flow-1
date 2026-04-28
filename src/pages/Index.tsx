@@ -194,11 +194,19 @@ const Index = () => {
           <div className="flex flex-wrap items-center justify-between gap-4">
             <div className="flex flex-wrap items-center gap-6">
               <label className="flex items-center gap-3">
-                <Switch checked={anonymous} onCheckedChange={handleAnonymousChange} />
+                <Switch
+                  checked={anonymous}
+                  onCheckedChange={handleAnonymousChange}
+                  className="data-[state=checked]:bg-info"
+                />
                 <span className="text-sm font-semibold text-foreground">Anonymous</span>
               </label>
               <label className="flex items-center gap-3">
-                <Switch checked={liveQA} onCheckedChange={setLiveQA} />
+                <Switch
+                  checked={liveQA}
+                  onCheckedChange={setLiveQA}
+                  className="data-[state=checked]:bg-info"
+                />
                 <span className="text-sm font-semibold text-foreground">Live Q&amp;A</span>
               </label>
             </div>
