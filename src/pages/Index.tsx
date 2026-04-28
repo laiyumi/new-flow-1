@@ -279,8 +279,8 @@ const Index = () => {
                         size="sm"
                         onClick={() => cycleStatus(q.id)}
                         className={
-                          q.status === "running"
-                            ? "h-9 w-[88px] rounded-lg bg-destructive text-destructive-foreground hover:bg-destructive/90"
+                          q.status === "live"
+                            ? "h-9 w-[88px] rounded-lg bg-warning text-warning-foreground hover:bg-warning/90"
                             : "h-9 w-[88px] rounded-lg bg-primary text-primary-foreground hover:bg-primary/90"
                         }
                       >
