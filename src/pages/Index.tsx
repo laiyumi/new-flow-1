@@ -332,15 +332,13 @@ const Index = () => {
       <AlertDialog open={backDialogOpen} onOpenChange={setBackDialogOpen}>
         <AlertDialogContent>
           <AlertDialogHeader>
-            <AlertDialogTitle>Leaving the presenter view</AlertDialogTitle>
+            <AlertDialogTitle>Leaving the current session</AlertDialogTitle>
             <AlertDialogDescription>
-              Do you want to end this session, or just leave the page and come back later?
-              Ending the session will store all results and Q&amp;A. Leaving keeps the session
-              active so participants can continue to respond.
+              End the session to save results and Q&amp;A. Leave to keep it active and return later.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter className="gap-2 sm:gap-2">
-            <AlertDialogCancel>Stay on page</AlertDialogCancel>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
             <Button
               variant="outline"
               onClick={leaveSessionActive}
