@@ -3,6 +3,7 @@ import { Eye, EyeOff, Plus, Trash2, SlidersHorizontal, Radio } from "lucide-reac
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import SharePopover from "@/components/SharePopover";
 import {
   Select,
   SelectContent,
