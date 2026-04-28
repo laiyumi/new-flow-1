@@ -100,6 +100,12 @@ const Index = () => {
     navigate("/");
   };
 
+  const discardSession = () => {
+    discardActiveSession(pollId);
+    setBackDialogOpen(false);
+    navigate("/");
+  };
+
   const toggleVisible = (id: number) =>
     setQuestions((qs) => qs.map((q) => (q.id === id ? { ...q, visible: !q.visible } : q)));
 
