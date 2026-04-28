@@ -109,6 +109,7 @@ const Index = () => {
                 <Radio className="mr-2 h-4 w-4" />
                 Display All Results
               </Button>
+              <SharePopover joinUrl={`${window.location.origin}/join/${encodeURIComponent(pollName)}`} />
             </div>
           </div>
         </section>
