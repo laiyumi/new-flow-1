@@ -18,15 +18,15 @@ const polls: Poll[] = [
     name: "Test Poll",
     course: "CS101 · Spring 2026",
     seedSessions: [
-      { id: "seed-1", name: "Apr 27, 2026 7:19 PM", endedAt: 0 },
-      { id: "seed-2", name: "Apr 20, 2026 7:05 PM", endedAt: 0 },
+      { id: "seed-1", name: "Apr 27, 2026 7:19 PM", endedAt: 0, participants: 32 },
+      { id: "seed-2", name: "Apr 20, 2026 7:05 PM", endedAt: 0, participants: 28 },
     ],
   },
   {
     id: "test-non-anonymous",
     name: "Test non-anonymous",
     course: "CS101 · Spring 2026",
-    seedSessions: [{ id: "seed-1", name: "Apr 27, 2026 6:48 PM", endedAt: 0 }],
+    seedSessions: [{ id: "seed-1", name: "Apr 27, 2026 6:48 PM", endedAt: 0, participants: 41 }],
   },
 ];
 
