@@ -6,7 +6,7 @@ import {
   endActiveSession,
   leaveSessionActive as leaveSessionActiveStore,
 } from "@/lib/sessions";
-import { Eye, EyeOff, Plus, Trash2, SlidersHorizontal, Radio, MoreVertical } from "lucide-react";
+import { Eye, EyeOff, Plus, Trash2, SlidersHorizontal, Radio, MoreVertical, Users } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
