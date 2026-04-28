@@ -285,7 +285,7 @@ const Index = () => {
 
           <TabsContent value="results" className="mt-6">
             <section className="rounded-2xl bg-card p-10 text-center text-muted-foreground shadow-sm">
-              Results will appear here.
+              Results of current session will appear here.
             </section>
           </TabsContent>
 
