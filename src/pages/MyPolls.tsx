@@ -90,17 +90,28 @@ const MyPolls = () => {
                 ) : (
                   <ul className="divide-y">
                     {poll.sessions.map((s) => (
-                      <li key={s.id} className="flex items-center justify-between py-2">
+                      <li key={s.id} className="flex items-center justify-between gap-3 py-2">
                         <span className="text-sm font-medium text-foreground">{s.name}</span>
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          onClick={() => viewResults(poll, s)}
-                          className="h-8 rounded-md"
-                        >
-                          <Activity className="mr-2 h-3.5 w-3.5" />
-                          View results
-                        </Button>
+                        <div className="flex items-center gap-2">
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            onClick={() => viewResults(poll, s)}
+                            className="h-8 rounded-md"
+                          >
+                            <Activity className="mr-2 h-3.5 w-3.5" />
+                            View results
+                          </Button>
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            onClick={() => viewQA(poll, s)}
+                            className="h-8 rounded-md"
+                          >
+                            <MessageSquare className="mr-2 h-3.5 w-3.5" />
+                            View Q&amp;A board
+                          </Button>
+                        </div>
                       </li>
                     ))}
                   </ul>
