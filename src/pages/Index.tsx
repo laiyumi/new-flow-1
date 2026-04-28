@@ -115,7 +115,7 @@ const Index = () => {
         {/* Title */}
         <div className="flex items-center gap-3">
           <button
-            onClick={() => navigate("/")}
+            onClick={() => setBackDialogOpen(true)}
             className="rounded-md p-2 text-muted-foreground hover:bg-muted hover:text-foreground"
             aria-label="Back to My Polls"
           >
