@@ -98,9 +98,10 @@ const SharePopover = ({ joinUrl }: Props) => {
     <HoverCard openDelay={100} closeDelay={150}>
       <HoverCardTrigger asChild>
         <Button
+          variant="outline"
           title="Share joining link and QR code"
           aria-label="Share joining link and QR code"
-          className="h-10 rounded-lg bg-primary px-3 text-primary-foreground hover:bg-primary/90"
+          className="h-10 rounded-lg border-info bg-transparent px-3 text-info hover:bg-info/10 hover:text-info"
         >
           <Share2 className="mr-2 h-4 w-4" />
           Share
