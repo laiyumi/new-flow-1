@@ -245,19 +245,29 @@ const Index = () => {
                     </div>
 
                     <div className="flex justify-center">
-                      <button className="rounded-md p-2 text-muted-foreground hover:bg-muted" aria-label="Edit">
-                        <SlidersHorizontal className="h-4 w-4" />
-                      </button>
-                    </div>
-
-                    <div className="flex justify-center">
-                      <button
-                        onClick={() => removeQuestion(q.id)}
-                        className="rounded-md p-2 text-muted-foreground hover:bg-destructive/10 hover:text-destructive"
-                        aria-label="Delete"
-                      >
-                        <Trash2 className="h-4 w-4" />
-                      </button>
+                      <DropdownMenu>
+                        <DropdownMenuTrigger asChild>
+                          <button
+                            className="rounded-md p-2 text-muted-foreground hover:bg-muted"
+                            aria-label="More actions"
+                          >
+                            <MoreVertical className="h-4 w-4" />
+                          </button>
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent align="end" className="w-40">
+                          <DropdownMenuItem>
+                            <SlidersHorizontal className="mr-2 h-4 w-4" />
+                            Edit
+                          </DropdownMenuItem>
+                          <DropdownMenuItem
+                            onClick={() => removeQuestion(q.id)}
+                            className="text-destructive focus:bg-destructive/10 focus:text-destructive"
+                          >
+                            <Trash2 className="mr-2 h-4 w-4" />
+                            Delete
+                          </DropdownMenuItem>
+                        </DropdownMenuContent>
+                      </DropdownMenu>
                     </div>
                   </div>
                 ))}
