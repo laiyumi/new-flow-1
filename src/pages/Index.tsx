@@ -30,7 +30,11 @@ const initialQuestions: Question[] = [
 ];
 
 const Index = () => {
-  const [pollName] = useState("Test non-anonymous");
+  const location = useLocation();
+  const navigate = useNavigate();
+  const stateName = (location.state as { name?: string } | null)?.name;
+  const defaultTab = (location.state as { tab?: string } | null)?.tab ?? "questions";
+  const [pollName] = useState(stateName ?? "Test non-anonymous");
   const [anonymous, setAnonymous] = useState(true);
   const [liveQA, setLiveQA] = useState(false);
   const [questions, setQuestions] = useState<Question[]>(initialQuestions);
