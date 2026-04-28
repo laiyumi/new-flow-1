@@ -208,8 +208,7 @@ const Index = () => {
                 onClick={() =>
                   window.open(`/polls/${params.id ?? "test-poll"}/join`, "_blank", "noopener")
                 }
-                variant="outline"
-                className="h-10 rounded-lg border-primary/40 bg-transparent px-3 text-primary hover:bg-primary/10 hover:text-primary"
+                className="h-10 rounded-lg bg-primary px-3 text-primary-foreground hover:bg-primary/90"
               >
                 <Eye className="mr-2 h-4 w-4" />
                 View as Participant
@@ -218,8 +217,7 @@ const Index = () => {
                 <TooltipTrigger asChild>
                   <Button
                     onClick={toggleAllVisible}
-                    variant="outline"
-                    className="h-10 rounded-lg border-primary/40 bg-transparent px-3 text-primary hover:bg-primary/10 hover:text-primary"
+                    className="h-10 rounded-lg bg-primary px-3 text-primary-foreground hover:bg-primary/90"
                   >
                     <Radio className="mr-2 h-4 w-4" />
                     Display All Results
