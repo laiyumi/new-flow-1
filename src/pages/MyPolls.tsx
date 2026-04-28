@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { BarChart3, Play, Activity, History, MessageSquare, RotateCcw } from "lucide-react";
+import { BarChart3, Play, Activity, History, MessageSquare, RotateCcw, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { getPollState, subscribe, type PastSession } from "@/lib/sessions";
 
