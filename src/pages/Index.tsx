@@ -80,22 +80,22 @@ const Index = () => {
       <div className="mx-auto max-w-6xl space-y-6">
         {/* Top section */}
         <section className="rounded-2xl bg-card p-6 shadow-sm">
-          <div className="flex-1 min-w-[260px]">
-            <label className="mb-2 block text-xs font-bold tracking-widest text-muted-foreground">
-              POLL NAME
-            </label>
-            <div className="relative max-w-2xl">
-              <Input
-                value={pollName}
-                onChange={(e) => setPollName(e.target.value)}
-                className="h-12 rounded-xl bg-surface text-lg font-bold pr-10"
-              />
-              <Pencil className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+          <div className="grid gap-4 lg:grid-cols-3">
+            {/* Poll name */}
+            <div className="rounded-xl border bg-surface/50 p-4">
+              <label className="mb-3 block text-xs font-bold tracking-widest text-muted-foreground">
+                POLL NAME
+              </label>
+              <div className="relative">
+                <Input
+                  value={pollName}
+                  onChange={(e) => setPollName(e.target.value)}
+                  className="h-10 rounded-lg bg-card text-base font-bold pr-9"
+                />
+                <Pencil className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+              </div>
             </div>
-          </div>
 
-          {/* Grouped settings + participant actions */}
-          <div className="mt-6 grid gap-4 border-t pt-5 md:grid-cols-2">
             {/* Poll settings group */}
             <div className="rounded-xl border bg-surface/50 p-4">
               <div className="mb-3 text-xs font-bold tracking-widest text-muted-foreground">
@@ -118,15 +118,15 @@ const Index = () => {
               <div className="mb-3 text-xs font-bold tracking-widest text-muted-foreground">
                 PARTICIPANT ACTIONS
               </div>
-              <div className="flex flex-wrap items-center gap-3">
-                <Button className="h-10 rounded-xl bg-primary px-4 text-primary-foreground hover:bg-primary/90">
+              <div className="flex flex-wrap items-center gap-2">
+                <Button className="h-10 rounded-lg bg-primary px-3 text-primary-foreground hover:bg-primary/90">
                   <Eye className="mr-2 h-4 w-4" />
                   View as Participant
                 </Button>
                 <Button
                   onClick={toggleAllVisible}
                   variant="outline"
-                  className="h-10 rounded-xl border-info/30 bg-info/10 text-info hover:bg-info/20 hover:text-info"
+                  className="h-10 rounded-lg border-info/30 bg-info/10 text-info hover:bg-info/20 hover:text-info"
                 >
                   <Radio className="mr-2 h-4 w-4" />
                   Display All Results
