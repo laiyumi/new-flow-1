@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { BarChart3, Play, Activity, History } from "lucide-react";
+import { BarChart3, Play, Activity, History, MessageSquare } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 type Session = {
@@ -47,6 +47,12 @@ const MyPolls = () => {
     });
   };
 
+  const viewQA = (poll: Poll, session: Session) => {
+    navigate(`/polls/${poll.id}`, {
+      state: { name: poll.name, tab: "qa", sessionName: session.name },
+    });
+  };
+
   return (
     <div className="min-h-screen bg-surface p-8">
       <div className="mx-auto max-w-6xl">
@@ -84,17 +90,28 @@ const MyPolls = () => {
                 ) : (
                   <ul className="divide-y">
                     {poll.sessions.map((s) => (
-                      <li key={s.id} className="flex items-center justify-between py-2">
+                      <li key={s.id} className="flex items-center justify-between gap-3 py-2">
                         <span className="text-sm font-medium text-foreground">{s.name}</span>
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          onClick={() => viewResults(poll, s)}
-                          className="h-8 rounded-md"
-                        >
-                          <Activity className="mr-2 h-3.5 w-3.5" />
-                          View results
-                        </Button>
+                        <div className="flex items-center gap-2">
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            onClick={() => viewResults(poll, s)}
+                            className="h-8 rounded-md"
+                          >
+                            <Activity className="mr-2 h-3.5 w-3.5" />
+                            View results
+                          </Button>
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            onClick={() => viewQA(poll, s)}
+                            className="h-8 rounded-md"
+                          >
+                            <MessageSquare className="mr-2 h-3.5 w-3.5" />
+                            View Q&amp;A board
+                          </Button>
+                        </div>
                       </li>
                     ))}
                   </ul>
