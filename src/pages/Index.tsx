@@ -108,8 +108,10 @@ const Index = () => {
     setQuestions((qs) =>
       qs.map((q) => {
         if (q.id !== id) return q;
-        const next: Question["status"] =
-          q.status === "not-started" ? "running" : q.status === "running" ? "complete" : "not-started";
+        // not-started -> live (push to participants)
+        // live        -> paused (stop accepting answers)
+        // paused      -> live (resume)
+        const next: Question["status"] = q.status === "live" ? "paused" : "live";
         return { ...q, status: next };
       }),
     );
