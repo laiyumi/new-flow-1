@@ -1,7 +1,6 @@
 import { useState } from "react";
-import { Eye, EyeOff, Pencil, Plus, Trash2, SlidersHorizontal, Radio } from "lucide-react";
+import { Eye, EyeOff, Plus, Trash2, SlidersHorizontal, Radio } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { Switch } from "@/components/ui/switch";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
@@ -28,7 +27,7 @@ const initialQuestions: Question[] = [
 ];
 
 const Index = () => {
-  const [pollName, setPollName] = useState("Test non-anonymous");
+  const [pollName] = useState("Test non-anonymous");
   const [anonymous, setAnonymous] = useState(false);
   const [liveQA, setLiveQA] = useState(true);
   const [questions, setQuestions] = useState<Question[]>(initialQuestions);
@@ -78,74 +77,61 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-surface p-6">
       <div className="mx-auto max-w-6xl space-y-6">
-        {/* Top section */}
+        {/* Title */}
+        <h1 className="text-3xl font-bold tracking-tight text-foreground">{pollName}</h1>
+
+        {/* Participant Control */}
         <section className="rounded-2xl bg-card p-6 shadow-sm">
-          <div className="grid gap-4 lg:grid-cols-3">
-            {/* Poll name */}
-            <div className="rounded-xl border bg-surface/50 p-4">
-              <label className="mb-3 block text-xs font-bold tracking-widest text-muted-foreground">
-                POLL NAME
+          <div className="mb-4 text-xs font-bold tracking-widest text-muted-foreground">
+            PARTICIPANT CONTROL
+          </div>
+          <div className="flex flex-wrap items-center justify-between gap-4">
+            <div className="flex flex-wrap items-center gap-6">
+              <label className="flex items-center gap-3">
+                <Switch checked={anonymous} onCheckedChange={setAnonymous} />
+                <span className="text-sm font-semibold text-foreground">Anonymous</span>
               </label>
-              <div className="relative">
-                <Input
-                  value={pollName}
-                  onChange={(e) => setPollName(e.target.value)}
-                  className="h-10 rounded-lg bg-card text-base font-bold pr-9"
-                />
-                <Pencil className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-              </div>
+              <label className="flex items-center gap-3">
+                <Switch checked={liveQA} onCheckedChange={setLiveQA} />
+                <span className="text-sm font-semibold text-foreground">Live Q&amp;A</span>
+              </label>
             </div>
-
-            {/* Poll settings group */}
-            <div className="rounded-xl border bg-surface/50 p-4">
-              <div className="mb-3 text-xs font-bold tracking-widest text-muted-foreground">
-                POLL SETTINGS
-              </div>
-              <div className="flex flex-wrap items-center gap-6">
-                <label className="flex items-center gap-3">
-                  <Switch checked={anonymous} onCheckedChange={setAnonymous} />
-                  <span className="text-sm font-semibold text-foreground">Anonymous</span>
-                </label>
-                <label className="flex items-center gap-3">
-                  <Switch checked={liveQA} onCheckedChange={setLiveQA} />
-                  <span className="text-sm font-semibold text-foreground">Live Q&amp;A</span>
-                </label>
-              </div>
-            </div>
-
-            {/* Participant actions group */}
-            <div className="rounded-xl border bg-surface/50 p-4">
-              <div className="mb-3 text-xs font-bold tracking-widest text-muted-foreground">
-                PARTICIPANT ACTIONS
-              </div>
-              <div className="flex flex-wrap items-center gap-2">
-                <Button className="h-10 rounded-lg bg-primary px-3 text-primary-foreground hover:bg-primary/90">
-                  <Eye className="mr-2 h-4 w-4" />
-                  View as Participant
-                </Button>
-                <Button
-                  onClick={toggleAllVisible}
-                  variant="outline"
-                  className="h-10 rounded-lg border-info/30 bg-info/10 text-info hover:bg-info/20 hover:text-info"
-                >
-                  <Radio className="mr-2 h-4 w-4" />
-                  Display All Results
-                </Button>
-              </div>
+            <div className="flex flex-wrap items-center gap-2">
+              <Button className="h-10 rounded-lg bg-primary px-3 text-primary-foreground hover:bg-primary/90">
+                <Eye className="mr-2 h-4 w-4" />
+                View as Participant
+              </Button>
+              <Button
+                onClick={toggleAllVisible}
+                variant="outline"
+                className="h-10 rounded-lg border-info/30 bg-info/10 text-info hover:bg-info/20 hover:text-info"
+              >
+                <Radio className="mr-2 h-4 w-4" />
+                Display All Results
+              </Button>
             </div>
           </div>
         </section>
 
-        {/* Tabs */}
+        {/* Underlined Tabs */}
         <Tabs defaultValue="questions" className="w-full">
-          <TabsList className="h-12 w-full justify-center gap-2 rounded-2xl bg-card p-1 shadow-sm">
-            <TabsTrigger value="questions" className="h-10 flex-1 max-w-[220px] rounded-xl text-sm font-bold tracking-wide data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
+          <TabsList className="h-auto w-full justify-start gap-6 rounded-none border-b bg-transparent p-0">
+            <TabsTrigger
+              value="questions"
+              className="relative h-11 rounded-none border-b-2 border-transparent bg-transparent px-1 text-sm font-bold tracking-wide text-muted-foreground shadow-none data-[state=active]:border-primary data-[state=active]:bg-transparent data-[state=active]:text-primary data-[state=active]:shadow-none"
+            >
               QUESTIONS
             </TabsTrigger>
-            <TabsTrigger value="results" className="h-10 flex-1 max-w-[220px] rounded-xl text-sm font-bold tracking-wide data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
+            <TabsTrigger
+              value="results"
+              className="relative h-11 rounded-none border-b-2 border-transparent bg-transparent px-1 text-sm font-bold tracking-wide text-muted-foreground shadow-none data-[state=active]:border-primary data-[state=active]:bg-transparent data-[state=active]:text-primary data-[state=active]:shadow-none"
+            >
               RESULTS
             </TabsTrigger>
-            <TabsTrigger value="qa" className="h-10 flex-1 max-w-[220px] rounded-xl text-sm font-bold tracking-wide data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
+            <TabsTrigger
+              value="qa"
+              className="relative h-11 rounded-none border-b-2 border-transparent bg-transparent px-1 text-sm font-bold tracking-wide text-muted-foreground shadow-none data-[state=active]:border-primary data-[state=active]:bg-transparent data-[state=active]:text-primary data-[state=active]:shadow-none"
+            >
               Q&amp;A BOARD
             </TabsTrigger>
           </TabsList>
@@ -156,7 +142,6 @@ const Index = () => {
                 QUESTIONS LIST
               </h2>
 
-              {/* Wireframe header: Timer | Start | Not Yet | Visible | Format | Edit | Trash */}
               <div className="grid grid-cols-[40px_minmax(0,1fr)_120px_100px_110px_90px_140px_70px_70px] items-center gap-3 border-b pb-3 text-[11px] font-bold tracking-widest text-muted-foreground">
                 <div></div>
                 <div>QUESTION</div>
