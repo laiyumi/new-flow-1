@@ -22,6 +22,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { Switch } from "@/components/ui/switch";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import SharePopover from "@/components/SharePopover";
@@ -148,7 +149,7 @@ const Index = () => {
 
         {/* Participant Control */}
         <section className="rounded-2xl bg-card p-6 shadow-sm">
-          <div className="mb-4 text-xs font-bold tracking-widest text-muted-foreground">
+          <div className="mb-4 text-base font-bold tracking-widest text-muted-foreground">
             PARTICIPANT CONTROL
           </div>
           <div className="flex flex-wrap items-center justify-between gap-4">
@@ -174,14 +175,19 @@ const Index = () => {
                 <Eye className="mr-2 h-4 w-4" />
                 View as Participant
               </Button>
-              <Button
-                onClick={toggleAllVisible}
-                variant="outline"
-                className="h-10 rounded-lg border-primary/40 bg-transparent px-3 text-primary hover:bg-primary/10 hover:text-primary"
-              >
-                <Radio className="mr-2 h-4 w-4" />
-                Display All Results
-              </Button>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button
+                    onClick={toggleAllVisible}
+                    variant="outline"
+                    className="h-10 rounded-lg border-primary/40 bg-transparent px-3 text-primary hover:bg-primary/10 hover:text-primary"
+                  >
+                    <Radio className="mr-2 h-4 w-4" />
+                    Display All Results
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent>Make every question's results visible to participants</TooltipContent>
+              </Tooltip>
             </div>
           </div>
         </section>
