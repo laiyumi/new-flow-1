@@ -54,7 +54,7 @@ const Index = () => {
   const navigate = useNavigate();
   const stateName = (location.state as { name?: string } | null)?.name;
   const defaultTab = (location.state as { tab?: string } | null)?.tab ?? "questions";
-  const [pollName] = useState(stateName ?? "Test non-anonymous");
+  const [pollName] = useState(stateName ?? "Week 1 Lecture Feedback");
   const [anonymous, setAnonymous] = useState(true);
   const [liveQA, setLiveQA] = useState(false);
   const [questions, setQuestions] = useState<Question[]>(initialQuestions);
