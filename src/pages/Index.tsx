@@ -175,14 +175,19 @@ const Index = () => {
                 <Eye className="mr-2 h-4 w-4" />
                 View as Participant
               </Button>
-              <Button
-                onClick={toggleAllVisible}
-                variant="outline"
-                className="h-10 rounded-lg border-primary/40 bg-transparent px-3 text-primary hover:bg-primary/10 hover:text-primary"
-              >
-                <Radio className="mr-2 h-4 w-4" />
-                Display All Results
-              </Button>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button
+                    onClick={toggleAllVisible}
+                    variant="outline"
+                    className="h-10 rounded-lg border-primary/40 bg-transparent px-3 text-primary hover:bg-primary/10 hover:text-primary"
+                  >
+                    <Radio className="mr-2 h-4 w-4" />
+                    Display All Results
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent>Make every question's results visible to participants</TooltipContent>
+              </Tooltip>
             </div>
           </div>
         </section>
