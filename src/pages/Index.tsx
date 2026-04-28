@@ -47,6 +47,7 @@ const initialQuestions: Question[] = [
 
 const Index = () => {
   const location = useLocation();
+  const params = useParams();
   const navigate = useNavigate();
   const stateName = (location.state as { name?: string } | null)?.name;
   const defaultTab = (location.state as { tab?: string } | null)?.tab ?? "questions";
