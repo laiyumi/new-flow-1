@@ -99,7 +99,7 @@ const SharePopover = ({ joinUrl }: Props) => {
       <HoverCardTrigger asChild>
         <Button
           variant="outline"
-          className="h-10 rounded-lg border-info/40 bg-transparent px-3 text-info hover:bg-info/10 hover:text-info"
+          className="h-10 rounded-lg border-primary/40 bg-transparent px-3 text-primary hover:bg-primary/10 hover:text-primary"
         >
           <Share2 className="mr-2 h-4 w-4" />
           Share
