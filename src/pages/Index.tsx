@@ -197,14 +197,12 @@ const Index = () => {
             </TabsTrigger>
             <TabsTrigger
               value="results"
-              disabled
               className="relative h-11 rounded-none border-b-2 border-transparent bg-transparent px-1 text-sm font-bold tracking-wide text-muted-foreground shadow-none data-[state=active]:border-primary data-[state=active]:bg-transparent data-[state=active]:text-primary data-[state=active]:shadow-none"
             >
               RESULTS
             </TabsTrigger>
             <TabsTrigger
               value="qa"
-              disabled
               className="relative h-11 rounded-none border-b-2 border-transparent bg-transparent px-1 text-sm font-bold tracking-wide text-muted-foreground shadow-none data-[state=active]:border-primary data-[state=active]:bg-transparent data-[state=active]:text-primary data-[state=active]:shadow-none"
             >
               Q&amp;A BOARD
