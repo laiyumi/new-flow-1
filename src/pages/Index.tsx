@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { ArrowLeft } from "lucide-react";
 import { Eye, EyeOff, Plus, Trash2, SlidersHorizontal, Radio } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
@@ -28,7 +30,11 @@ const initialQuestions: Question[] = [
 ];
 
 const Index = () => {
-  const [pollName] = useState("Test non-anonymous");
+  const location = useLocation();
+  const navigate = useNavigate();
+  const stateName = (location.state as { name?: string } | null)?.name;
+  const defaultTab = (location.state as { tab?: string } | null)?.tab ?? "questions";
+  const [pollName] = useState(stateName ?? "Test non-anonymous");
   const [anonymous, setAnonymous] = useState(true);
   const [liveQA, setLiveQA] = useState(false);
   const [questions, setQuestions] = useState<Question[]>(initialQuestions);
@@ -79,7 +85,16 @@ const Index = () => {
     <div className="min-h-screen bg-surface p-6">
       <div className="mx-auto max-w-6xl space-y-6">
         {/* Title */}
-        <h1 className="text-3xl font-bold tracking-tight text-foreground">{pollName}</h1>
+        <div className="flex items-center gap-3">
+          <button
+            onClick={() => navigate("/")}
+            className="rounded-md p-2 text-muted-foreground hover:bg-muted hover:text-foreground"
+            aria-label="Back to My Polls"
+          >
+            <ArrowLeft className="h-5 w-5" />
+          </button>
+          <h1 className="text-3xl font-bold tracking-tight text-foreground">{pollName}</h1>
+        </div>
 
         {/* Participant Control */}
         <section className="rounded-2xl bg-card p-6 shadow-sm">
@@ -119,7 +134,7 @@ const Index = () => {
         </section>
 
         {/* Underlined Tabs */}
-        <Tabs defaultValue="questions" className="w-full">
+        <Tabs defaultValue={defaultTab} className="w-full">
           <TabsList className="h-auto w-full justify-start gap-6 rounded-none border-b bg-transparent p-0">
             <TabsTrigger
               value="questions"
