@@ -57,6 +57,22 @@ const Index = () => {
   const defaultTab = (location.state as { tab?: string } | null)?.tab ?? "questions";
   const [pollName] = useState(stateName ?? "Week 1 Lecture Feedback");
   const [anonymous, setAnonymous] = useState(true);
+  const [anonDialogOpen, setAnonDialogOpen] = useState(false);
+  const invitedParticipants = 42; // mock count of invited participants in the space
+
+  const handleAnonymousChange = (next: boolean) => {
+    if (!next) {
+      // toggling OFF -> confirm restricted access first
+      setAnonDialogOpen(true);
+    } else {
+      setAnonymous(true);
+    }
+  };
+
+  const confirmDisableAnonymous = () => {
+    setAnonymous(false);
+    setAnonDialogOpen(false);
+  };
   const [liveQA, setLiveQA] = useState(false);
   const [questions, setQuestions] = useState<Question[]>(initialQuestions);
   const [allVisible, setAllVisible] = useState(false);
