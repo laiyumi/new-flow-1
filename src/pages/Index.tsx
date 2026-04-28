@@ -328,6 +328,34 @@ const Index = () => {
           </TabsContent>
         </Tabs>
       </div>
+
+      <AlertDialog open={backDialogOpen} onOpenChange={setBackDialogOpen}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Leaving the presenter view</AlertDialogTitle>
+            <AlertDialogDescription>
+              Do you want to end this session, or just leave the page and come back later?
+              Ending the session will store all results and Q&amp;A. Leaving keeps the session
+              active so participants can continue to respond.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter className="gap-2 sm:gap-2">
+            <AlertDialogCancel>Stay on page</AlertDialogCancel>
+            <Button
+              variant="outline"
+              onClick={leaveSessionActive}
+            >
+              Leave, keep session active
+            </Button>
+            <AlertDialogAction
+              onClick={endSession}
+              className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+            >
+              End session
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   );
 };
