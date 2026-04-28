@@ -138,6 +138,12 @@ const Index = () => {
           <span className="text-sm font-medium text-muted-foreground">
             session: {sessionLabel}
           </span>
+          <span className="ml-auto inline-flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1.5 ring-1 ring-primary/20">
+            <span className="h-2 w-2 animate-pulse rounded-full bg-primary" />
+            <Users className="h-4 w-4 text-primary" />
+            <span className="text-sm font-bold text-primary">0</span>
+            <span className="text-[10px] font-bold tracking-widest text-primary/80">PARTICIPANTS</span>
+          </span>
         </div>
 
         {/* Participant Control */}
