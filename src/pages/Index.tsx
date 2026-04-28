@@ -5,6 +5,7 @@ import {
   ensureActiveSession,
   endActiveSession,
   leaveSessionActive as leaveSessionActiveStore,
+  discardActiveSession,
 } from "@/lib/sessions";
 import { Eye, EyeOff, Plus, Trash2, SlidersHorizontal, Radio, MoreVertical, Users } from "lucide-react";
 import {
