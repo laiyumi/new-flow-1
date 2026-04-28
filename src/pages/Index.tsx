@@ -80,54 +80,59 @@ const Index = () => {
       <div className="mx-auto max-w-6xl space-y-6">
         {/* Top section */}
         <section className="rounded-2xl bg-card p-6 shadow-sm">
-          <div className="flex flex-wrap items-end gap-6">
-            <div className="flex-1 min-w-[260px]">
-              <label className="mb-2 block text-xs font-bold tracking-widest text-muted-foreground">
-                POLL NAME
-              </label>
-              <div className="relative">
-                <Input
-                  value={pollName}
-                  onChange={(e) => setPollName(e.target.value)}
-                  className="h-12 rounded-xl bg-surface text-lg font-bold pr-10"
-                />
-                <Pencil className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-              </div>
-            </div>
-
-            <div>
-              <div className="mb-2 text-xs font-bold tracking-widest text-muted-foreground">
-                PRESENTATION
-              </div>
-              <Button className="h-12 rounded-xl bg-primary px-5 text-primary-foreground hover:bg-primary/90">
-                <Eye className="mr-2 h-4 w-4" />
-                View as Participant
-              </Button>
+          <div className="flex-1 min-w-[260px]">
+            <label className="mb-2 block text-xs font-bold tracking-widest text-muted-foreground">
+              POLL NAME
+            </label>
+            <div className="relative max-w-2xl">
+              <Input
+                value={pollName}
+                onChange={(e) => setPollName(e.target.value)}
+                className="h-12 rounded-xl bg-surface text-lg font-bold pr-10"
+              />
+              <Pencil className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
             </div>
           </div>
 
-          {/* Toggles row */}
-          <div className="mt-6 flex flex-wrap items-center gap-6 border-t pt-5">
-            <label className="flex items-center gap-3">
-              <span className="text-xs font-bold tracking-widest text-muted-foreground">
-                ANONYMOUS
-              </span>
-              <Switch checked={anonymous} onCheckedChange={setAnonymous} />
-            </label>
-            <label className="flex items-center gap-3">
-              <span className="text-xs font-bold tracking-widest text-muted-foreground">
-                LIVE Q&amp;A
-              </span>
-              <Switch checked={liveQA} onCheckedChange={setLiveQA} />
-            </label>
-            <Button
-              onClick={toggleAllVisible}
-              variant="outline"
-              className="ml-auto h-11 rounded-xl border-info/30 bg-info/10 text-info hover:bg-info/20 hover:text-info"
-            >
-              <Radio className="mr-2 h-4 w-4" />
-              Display All Results to Participants
-            </Button>
+          {/* Grouped settings + participant actions */}
+          <div className="mt-6 grid gap-4 border-t pt-5 md:grid-cols-2">
+            {/* Poll settings group */}
+            <div className="rounded-xl border bg-surface/50 p-4">
+              <div className="mb-3 text-xs font-bold tracking-widest text-muted-foreground">
+                POLL SETTINGS
+              </div>
+              <div className="flex flex-wrap items-center gap-6">
+                <label className="flex items-center gap-3">
+                  <Switch checked={anonymous} onCheckedChange={setAnonymous} />
+                  <span className="text-sm font-semibold text-foreground">Anonymous</span>
+                </label>
+                <label className="flex items-center gap-3">
+                  <Switch checked={liveQA} onCheckedChange={setLiveQA} />
+                  <span className="text-sm font-semibold text-foreground">Live Q&amp;A</span>
+                </label>
+              </div>
+            </div>
+
+            {/* Participant actions group */}
+            <div className="rounded-xl border bg-surface/50 p-4">
+              <div className="mb-3 text-xs font-bold tracking-widest text-muted-foreground">
+                PARTICIPANT ACTIONS
+              </div>
+              <div className="flex flex-wrap items-center gap-3">
+                <Button className="h-10 rounded-xl bg-primary px-4 text-primary-foreground hover:bg-primary/90">
+                  <Eye className="mr-2 h-4 w-4" />
+                  View as Participant
+                </Button>
+                <Button
+                  onClick={toggleAllVisible}
+                  variant="outline"
+                  className="h-10 rounded-xl border-info/30 bg-info/10 text-info hover:bg-info/20 hover:text-info"
+                >
+                  <Radio className="mr-2 h-4 w-4" />
+                  Display All Results
+                </Button>
+              </div>
+            </div>
           </div>
         </section>
 
