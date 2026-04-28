@@ -163,6 +163,7 @@ const Index = () => {
               </label>
             </div>
             <div className="flex flex-wrap items-center gap-2">
+              <SharePopover joinUrl="nextgenpoll.com/join/4A7PZJ" />
               <Button
                 onClick={() =>
                   window.open(`/polls/${params.id ?? "test-poll"}/join`, "_blank", "noopener")
@@ -181,7 +182,7 @@ const Index = () => {
                 <Radio className="mr-2 h-4 w-4" />
                 Display All Results
               </Button>
-              <SharePopover joinUrl="nextgenpoll.com/join/4A7PZJ" />
+            </div>
             </div>
           </div>
         </section>
