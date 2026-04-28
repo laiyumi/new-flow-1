@@ -323,8 +323,8 @@ const Index = () => {
               </div>
 
               <button
-                onClick={addQuestion}
-                className="mt-4 flex w-full items-center justify-center gap-2 rounded-xl border-2 border-dashed border-border py-4 text-sm font-semibold text-muted-foreground hover:border-primary hover:text-primary"
+                disabled
+                className="mt-4 flex w-full cursor-not-allowed items-center justify-center gap-2 rounded-xl border-2 border-dashed border-border py-4 text-sm font-semibold text-muted-foreground opacity-50"
               >
                 <Plus className="h-4 w-4" />
                 Add Question
