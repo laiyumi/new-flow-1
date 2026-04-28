@@ -108,7 +108,13 @@ const MyPolls = () => {
                     <ul className="divide-y">
                       {sessions.map((s) => (
                         <li key={s.id} className="flex items-center justify-between gap-3 py-2">
-                          <span className="text-sm font-medium text-foreground">{s.name}</span>
+                          <div className="flex min-w-0 items-center gap-3">
+                            <span className="truncate text-sm font-medium text-foreground">{s.name}</span>
+                            <span className="inline-flex shrink-0 items-center gap-1 text-xs font-semibold text-muted-foreground">
+                              <Users className="h-3.5 w-3.5" />
+                              {s.participants}
+                            </span>
+                          </div>
                           <div className="flex items-center gap-2">
                             <Button
                               variant="outline"
