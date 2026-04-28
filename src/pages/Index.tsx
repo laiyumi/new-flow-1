@@ -3,6 +3,7 @@ import { Eye, EyeOff, Plus, Trash2, SlidersHorizontal, Radio } from "lucide-reac
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import SharePopover from "@/components/SharePopover";
 import {
   Select,
   SelectContent,
@@ -108,6 +109,7 @@ const Index = () => {
                 <Radio className="mr-2 h-4 w-4" />
                 Display All Results
               </Button>
+              <SharePopover joinUrl={`${window.location.origin}/join/${encodeURIComponent(pollName)}`} />
             </div>
           </div>
         </section>
