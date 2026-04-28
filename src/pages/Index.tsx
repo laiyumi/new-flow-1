@@ -168,7 +168,7 @@ const Index = () => {
                 QUESTIONS LIST
               </h2>
 
-              <div className="grid grid-cols-[40px_minmax(0,1fr)_120px_100px_110px_90px_140px_70px_70px] items-center gap-3 border-b pb-3 text-[11px] font-bold tracking-widest text-muted-foreground">
+              <div className="grid grid-cols-[40px_minmax(0,1fr)_120px_100px_110px_140px_140px_60px] items-center gap-3 border-b pb-3 text-[11px] font-bold tracking-widest text-muted-foreground">
                 <div></div>
                 <div>QUESTION</div>
                 <div className="text-center">TIMER</div>
@@ -176,15 +176,14 @@ const Index = () => {
                 <div className="text-center">STATUS</div>
                 <div className="text-center">RESULT VISIBILITY</div>
                 <div className="text-center">FORMAT</div>
-                <div className="text-center">EDIT</div>
-                <div className="text-center">TRASH</div>
+                <div className="text-center">MORE</div>
               </div>
 
               <div className="divide-y">
                 {questions.map((q, i) => (
                   <div
                     key={q.id}
-                    className="grid grid-cols-[40px_minmax(0,1fr)_120px_100px_110px_90px_140px_70px_70px] items-center gap-3 py-4"
+                    className="grid grid-cols-[40px_minmax(0,1fr)_120px_100px_110px_140px_140px_60px] items-center gap-3 py-4"
                   >
                     <div className="flex h-7 w-7 items-center justify-center rounded-md bg-primary/10 text-sm font-bold text-primary">
                       {i + 1}
