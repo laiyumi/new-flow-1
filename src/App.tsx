@@ -19,6 +19,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<MyPolls />} />
           <Route path="/polls/:id" element={<Index />} />
+          <Route path="/polls/:id/join" element={<JoinPoll />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
