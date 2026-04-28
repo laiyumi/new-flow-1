@@ -85,7 +85,16 @@ const Index = () => {
     <div className="min-h-screen bg-surface p-6">
       <div className="mx-auto max-w-6xl space-y-6">
         {/* Title */}
-        <h1 className="text-3xl font-bold tracking-tight text-foreground">{pollName}</h1>
+        <div className="flex items-center gap-3">
+          <button
+            onClick={() => navigate("/")}
+            className="rounded-md p-2 text-muted-foreground hover:bg-muted hover:text-foreground"
+            aria-label="Back to My Polls"
+          >
+            <ArrowLeft className="h-5 w-5" />
+          </button>
+          <h1 className="text-3xl font-bold tracking-tight text-foreground">{pollName}</h1>
+        </div>
 
         {/* Participant Control */}
         <section className="rounded-2xl bg-card p-6 shadow-sm">
